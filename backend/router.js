@@ -105,8 +105,10 @@ function mergeSinger(singer) {
 
 // 注册后端路由
 function registerRouter(app) {
+  // 推荐列表
   registerRecommend(app)
 
+  // 歌手列表
   registerSingerList(app)
 
   registerSingerDetail(app)

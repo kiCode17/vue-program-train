@@ -1,9 +1,35 @@
 <template>
-  <h1>ccc</h1>
+  <div class="singer" v-loading="!singers.length">
+    <index-list :data="singers"></index-list>
+  </div>
 </template>
 
 <script>
+  import { getSingerList } from '../service/singer'
+  import IndexList from '../components/base/index-list/index-list'
+
+  export default {
+    name: 'singer',
+    components: {
+      IndexList
+    },
+    data() {
+      return {
+        singers: [] // 歌手列表
+      }
+    },
+    async created() {
+      const result = await getSingerList()
+      this.singers = result.singers
+    }
+  }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .singer {
+    position: fixed;
+    width: 100%;
+    top: 88px;
+    bottom: 0;
+  }
 </style>

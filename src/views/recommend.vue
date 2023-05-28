@@ -61,7 +61,6 @@
       const result = await getRecommend()
       this.sliders = result.sliders
       this.albums = result.albums
-      console.log('result==', result)
     }
   }
 </script>

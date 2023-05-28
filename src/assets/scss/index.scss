@@ -1,5 +1,5 @@
 // 引入css样式的文件，
 // 不需要引入mixin和variable文件，这两个文件只是相当于变量，并没有真正的css样式代码，是给sass loader用的
-@import "reset";
-@import "icon";
-@import "base";
+@import "./reset";
+@import "./icon";
+@import "./base";
