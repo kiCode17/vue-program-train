@@ -111,8 +111,10 @@ function registerRouter(app) {
   // 歌手列表
   registerSingerList(app)
 
+  // 歌手详情
   registerSingerDetail(app)
 
+  // 歌曲url
   registerSongsUrl(app)
 
   registerLyric(app)
@@ -157,7 +159,7 @@ function registerRecommend(app) {
       data
     }).then((response) => {
       const data = response.data
-      if (data.code === ERR_OK) {ns
+      if (data.code === ERR_OK) {
         // 处理轮播图数据
         const focusList = data.focus.data.shelf.v_niche[0].v_card
         const sliders = []
@@ -318,6 +320,7 @@ function registerSingerDetail(app) {
   app.get('/api/getSingerDetail', (req, res) => {
     const url = 'https://u.y.qq.com/cgi-bin/musics.fcg'
 
+    // 构造第三方接口请求需要的请求参数
     const data = JSON.stringify({
       comm: { ct: 24, cv: 0 },
       singerSongList: {

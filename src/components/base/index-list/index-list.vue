@@ -20,6 +20,7 @@
             v-for="item in group.list"
             :key="item.id"
             class="item"
+            @click="onItemClick(item)"
           >
             <img class="avatar" v-lazy="item.pic">
             <span class="name">{{ item.name }}</span>
@@ -65,6 +66,7 @@
     components: {
       Scroll
     },
+    emit: ['select'],
     props: {
       data: {
         type: Array,
@@ -73,11 +75,17 @@
         }
       }
     },
-    setup(props) {
+    setup(props, { emit }) {
       const { groupRef, onScroll, fixedTitle, fixedStyle, currentIndex } = useFixed(props)
       const { shortcutList, scrollRef, onShortcutTouchStart, onShortcutTouchMove } = useShortcut(props, groupRef)
 
+      function onItemClick(item) {
+        emit('select', item)
+      }
+
       return {
+        // 组件自身返回方法
+        onItemClick,
         // fixed钩子返回
         groupRef,
         onScroll,
